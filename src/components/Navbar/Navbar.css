@@ -1,0 +1,9 @@
+nav{
+background-color: blue;
+height: 5vh;
+display: flex;
+align-items: center;
+justify-content: flex-end;
+margin-right: 600px;
+width: 110vw;
+}
