@@ -1,9 +1,39 @@
 nav{
-background-color: blue;
-height: 5vh;
+
 display: flex;
 align-items: center;
-justify-content: flex-end;
-margin-right: 600px;
-width: 110vw;
+justify-content:space-between;
+flex-direction: column;
+margin-top: 50px;
+border: 1px solid black;
+width: 400px;
+height: 229px;
+background: whitesmoke;
+margin-left: 760px;
+
+opacity: 0.9;
+}
+.header {
+display: flex;
+flex-direction: row-reverse;
+justify-content: center;
+align-items: center;
+color: rgb(63, 37, 78);
+background-color: rgb(25, 192, 207);
+font-size: 25px;
+opacity: 0.7
+}
+.links-container {
+ display: flex;
+ width:330px;
+ margin-bottom: 50x;
+ justify-content: space-between;
+ color: whitesmoke;
+ font-size: 30px;
+ margin-left: 50px;
+
+}
+.links {
+ text-decoration:underline;   
+ color: black;
 }
