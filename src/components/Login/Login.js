@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Home/Home.css';
+import '../Login/Login.css';
 import { Link, HashRouter } from 'react-router-dom';
 import { connect} from 'react-redux';
 import { logout } from '../../store';
@@ -11,7 +11,7 @@ import Navbar from '../Navbar/Navbar';
 
 
 
-class Home extends Component {
+class Login extends Component {
 constructor(props) {
 super(props);    
 }
@@ -20,11 +20,19 @@ componentDidMount() {
 }
 render() {
  return (
-
-  <div>
-      <Navbar />
-<h1>Home Page </h1>
-  </div>
+<div>
+<Navbar />
+    <div className='login-box'>
+    <h4>Sign In to continue</h4>
+   <input placeholder='Email' />
+   <br />
+   <input placeholder='Password' />
+   <br />
+   <button>Login</button>
+   <br />
+   <button> Forgot Password?</button> 
+   </div>
+</div>
  
   
  )   
@@ -32,4 +40,4 @@ render() {
 }
 
 
-export default Home;
+export default Login;

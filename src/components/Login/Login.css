@@ -1,0 +1,15 @@
+.login-box{
+
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-direction: column;
+    margin-top: 50px;
+    border: 1px solid black;
+    width: 400px;
+    height: 229px;
+    background: whitesmoke;
+    margin-left: 760px;
+    
+    opacity: 0.9;
+    }

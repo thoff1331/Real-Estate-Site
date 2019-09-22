@@ -20,37 +20,27 @@ componentDidMount() {
 render() {
  return (
    <HashRouter>
-
-   <div>
-   <div>
-   <div className='header'>
+<div className='header'>
      <h1>Welcome to Cheryl Barrus Real Estate</h1>
      </div>
      <div className='links-container'>
+       <Link className='links' to='/Login'>
+         <h3>LOGIN</h3>
+       </Link>
        <Link className='links' to='/'>
      <h3 >HOME</h3>
        </Link>
        <Link className='links' to='/listings'>
      <h3>LISTINGS</h3>
        </Link>
+       <Link className='add-link' to='/create'>
+     <h3>+</h3>
+       </Link>
 </div>
 <div>
      </div>
-    </div> 
-   <nav>
-     <h4>Sign In to continue</h4>
-   <input placeholder='Email' />
-   <br />
-   <input placeholder='Password' />
-   <br />
-   <button>Login</button>
-   <br />
-   <button> Forgot Password?</button> 
-   </nav>  
-   </div>
-   </HashRouter>
-  
- )   
+    </HashRouter>
+)   
 }
 }
 

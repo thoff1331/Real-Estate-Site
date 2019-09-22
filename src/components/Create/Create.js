@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Home/Home.css';
+import '../Create/Create.css';
 import { Link, HashRouter } from 'react-router-dom';
 import { connect} from 'react-redux';
 import { logout } from '../../store';
@@ -11,7 +11,7 @@ import Navbar from '../Navbar/Navbar';
 
 
 
-class Home extends Component {
+class Create extends Component {
 constructor(props) {
 super(props);    
 }
@@ -21,10 +21,10 @@ componentDidMount() {
 render() {
  return (
 
-  <div>
-      <Navbar />
-<h1>Home Page </h1>
-  </div>
+    <div className='Create-box'>
+       <Navbar /> 
+    <h1>Create Page</h1> 
+   </div>
  
   
  )   
@@ -32,4 +32,4 @@ render() {
 }
 
 
-export default Home;
+export default Create;

@@ -25,7 +25,7 @@ opacity: 0.7
 }
 .links-container {
  display: flex;
- width:330px;
+ width:450px;
  margin-bottom: 50x;
  justify-content: space-between;
  color: whitesmoke;
@@ -36,4 +36,11 @@ opacity: 0.7
 .links {
  text-decoration:underline;   
  color: black;
+}
+.add-link {
+ text-decoration: none;
+ color: black;
+ font-size: 40px;
+ margin-top: -20px;
+ margin-left: 10px;   
 }
