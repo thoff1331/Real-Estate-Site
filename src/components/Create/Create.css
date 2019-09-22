@@ -1,0 +1,12 @@
+.Create-feilds {
+ list-style-type: none;
+ border: 10px solid black;
+ display: flex;
+ flex-direction: column;
+ align-items: center;   
+ height: 300px;
+ justify-content: space-evenly;
+ width: 300px;
+ margin-left: 785px;
+ background: whitesmoke;
+}
