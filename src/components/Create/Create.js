@@ -13,11 +13,42 @@ import Navbar from '../Navbar/Navbar';
 
 class Create extends Component {
 constructor(props) {
-super(props);    
+super(props);
+this.state = {
+   file: null
+};
+this.handleFileUpload = this.handleFileUpload.bind(this);
+this.handleChange = this.handleChange.bind(this);
+this.handleSubmit = this.handleSubmit.bind(this);
 }
-componentDidMount() {
+handleChange(e) {
+   this.setState({ [e.target.name]: e.target.value });
+ }
+ handleFileUpload(e) {
+   this.setState({ file: e.target.files });
+ }
+ submitFile = (event, id) => {
+   event.preventDefault();
+   if (!this.state.file) {
+     alert("Please Upload a Profile Picture");
+   } else {
+     event.preventDefault();
+     const formData = new FormData();
+     formData.append("file", this.state.file[0]);
+     axios
+       .post("/auth/addProfilePic", formData, {
+         headers: {
+           "Content-Type": "multipart/form-data"
+         }
+       })
+      
+   }
+ };
 
-}
+ handleSubmit() {
+   this.props.history.push("/listings");
+ }
+
 render() {
  return (
 <div>
@@ -44,16 +75,23 @@ render() {
           <input></input>
        </li>
        <li>
+          <label>Year Built</label>
+          <input></input>
+          
+       </li>
+       <li>
           <label>Asking Price</label>
           <input></input>
           
        </li>
        <li>
-       <label>Description</label>
-       <input></input>   
+     
+       <input onChange={this.handleFileUpload} type="file"></input>   
        </li>
-      <label>Images Go Here</label>
-      <button>Post Listing</button>
+       <li>
+       <input placeholder='Descrive your Listing' className='home-description'></input>   
+       </li>
+      <button onClick={this.handleSubmit}>Post Listing</button>
     </ul>
    </div>
 </div>
