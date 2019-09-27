@@ -15,7 +15,15 @@ class Create extends Component {
 constructor(props) {
 super(props);
 this.state = {
-   file: null
+   file: null,
+   address: '',
+   city: '',
+   state: '',
+   zipcode: '',
+   yearbuilt: '',
+   askingprice: '',
+   description: ''
+
 };
 this.handleFileUpload = this.handleFileUpload.bind(this);
 this.handleChange = this.handleChange.bind(this);
@@ -45,8 +53,18 @@ handleChange(e) {
    }
  };
 
- handleSubmit() {
+ handleSubmit(e) {
+   e.preventDefault()
+   axios.post("/api/auth/create", {
+     address: this.state.address,
+     city: this.state.city,
+     zipcode: this.state.zipcode,
+     state: this.state.state,
+     description: this.state.description,
+     askingprice: this.state.askingprice
+   })
    this.props.history.push("/listings");
+   console.log(this.state)
  }
 
 render() {
@@ -58,38 +76,38 @@ render() {
     <ul className='Create-feilds'>
        <li>
           <label>Address</label>
-          <input></input>
+          <input value={this.state.address} onChange={this.handleChange} name='address'></input>
           
        </li>
          
        <li> 
        <label>City</label>
-       <input></input>
+       <input value={this.state.city} onChange={this.handleChange}  name='city'></input>
        </li>
        <li>
          <label>State</label> 
-         <input></input>
+         <input value={this.state.state} onChange={this.handleChange}  name='state'></input>
        </li>
        <li>
           <label>Zip Code</label>
-          <input></input>
+          <input value={this.state.zipcode} onChange={this.handleChange}  name='zipcode'></input>
        </li>
        <li>
           <label>Year Built</label>
-          <input></input>
+          <input value={this.state.yearbuilt} onChange={this.handleChange}  name='yearbuilt'></input>
           
        </li>
        <li>
           <label>Asking Price</label>
-          <input></input>
+          <input value={this.state.askingprice} onChange={this.handleChange}  name='askingprice'></input>
           
        </li>
        <li>
      
-       <input onChange={this.handleFileUpload} type="file"></input>   
+       <input onChange={this.handleChange}  onChange={this.handleFileUpload} type="file"></input>   
        </li>
        <li>
-       <input placeholder='Descrive your Listing' className='home-description'></input>   
+       <textarea value={this.state.description}  onChange={this.handleChange} name='description' placeholder='Descrive your Listing' className='home-description'></textarea>   
        </li>
       <button onClick={this.handleSubmit}>Post Listing</button>
     </ul>

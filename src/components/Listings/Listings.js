@@ -13,25 +13,41 @@ import Navbar from '../Navbar/Navbar';
 
 class Listings extends Component {
 constructor(props) {
-super(props);    
+super(props);
+this.state = {
+  listings: []
+};
 }
 componentDidMount() {
-
+axios.get("/api/auth/listings").then(res => {
+this.setState({
+  listings: res.data
+})  
+})
 }
 render() {
- return (
-     <div> 
-
-<Navbar />
-  <div>
-<h1>Listings Page </h1>
-  </div>
-     </div>
+  console.log(this.state.listings)
+  let mappedListings = this.state.listings.map((val, index) => {
+    return (
+      <div>
+      <h4 key={index}>{val.address}</h4>
+      <h3>{val.askingprice}</h3>
+      </div>
+    )
+  })
+  return (
+      <div> 
  
+ <Navbar />
+   <div>
+ <h1>Listings Page </h1>
+ {mappedListings}
+   </div>
+      </div>
   
- )   
-}
-}
-
-
+   
+  )   
+ }
+ }
+ 
 export default Listings;

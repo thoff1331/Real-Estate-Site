@@ -9,10 +9,27 @@ const bluebird = require("bluebird");
 const multiparty = require("multiparty");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const cc = require('./controllers/createController');
+const massive = require("massive");
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(express.json());
+const { CONNECTION_STRING, SESSION_SECRET, KEY } = process.env;
+massive(CONNECTION_STRING)
+  .then(db => {
+    app.set("db", db);
+    console.log("Database Connected");
+  })
+  .catch(err => {
+   console.log("Not connected")
+  });
+
+  app.post("/api/create", cc.create)
+
+
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
@@ -33,12 +50,16 @@ AWS.config.update({
     };
     return s3.upload(params).promise();
   };
+
+
   app.use(express.static(`${__dirname}/../build`));
-  app.use(express.json());
-  const { SESSION_SECRET, KEY } = process.env;
+
+
+  app.post("/api/auth/create", cc.create)
+  app.get("/api/auth/listings", cc.listings)
  
 
-PORT = 3131;
+PORT = 6969;
 
 app.listen(PORT, () => {
     console.log(`Listening on ${PORT}`);

@@ -12,6 +12,7 @@
     "express-session": "^1.16.2",
     "file-type": "^12.3.0",
     "fs": "0.0.1-security",
+    "massive": "^6.1.0",
     "multiparty": "^4.2.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -43,5 +44,5 @@
     ]
   },
   "main": "server/index.js",
-  "proxy": "http://localhost:3131"
+  "proxy": "http://localhost:6969"
 }

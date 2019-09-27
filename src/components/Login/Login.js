@@ -52,7 +52,7 @@ render() {
    <br />
    <button onClick={this.handleSubmit}>Login</button>
    <br />
-   <button> Forgot Password?</button> 
+  
    </div>
 </div>
  
