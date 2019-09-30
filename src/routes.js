@@ -10,7 +10,7 @@ export default (
     <Route   path="/listings" component={Listings} />
     <Route   path="/login" component={Login} />
     <Route   path="/create" component={Create} />
-    <Route   path="/" component={Home} />
+    <Route exact path="/" component={Home} />
    
   </Switch>
 );

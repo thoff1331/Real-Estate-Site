@@ -32,6 +32,9 @@ render() {
       <div>
       <h4 key={index}>{val.address}</h4>
       <h3>{val.askingprice}</h3>
+      <Link to={`listing/${val.address}`}>
+      <button>More Info</button>
+      </Link>
       </div>
     )
   })
