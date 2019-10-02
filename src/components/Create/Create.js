@@ -59,6 +59,7 @@ handleChange(e) {
      address: this.state.address,
      city: this.state.city,
      zipcode: this.state.zipcode,
+     yearbuilt: this.state.yearbuilt,
      state: this.state.state,
      description: this.state.description,
      askingprice: this.state.askingprice

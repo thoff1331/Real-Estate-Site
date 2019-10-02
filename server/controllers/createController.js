@@ -1,7 +1,7 @@
 const create = (req,res) => {
 const db = req.app.get("db");
 const { address, city, state, zipcode,yearbuilt,askingprice,description } = req.body    
-db.create([address, city, state, zipcode,yearbuilt,askingprice,description]) .then(response => res.status(200).json(response[0]))
+db.create([address, city, state, zipcode, yearbuilt, askingprice, description]) .then(response => res.status(200).json(response[0]))
 .catch(err => console.log('nope'));
 }
 const listings = (req,res) => {
@@ -11,8 +11,16 @@ db.listings().then(listings => {
   });
 };
 
+const listing = (req,res) => {
+const db = req.app.get("db");
+db.get_listing(req.params.id).then(listing => {
+res.status(200).json(listings);  
+})  
+}
+
 
 module.exports = {
  create,
- listings   
+ listings,
+ listing   
 };

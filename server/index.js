@@ -59,7 +59,7 @@ AWS.config.update({
   app.get("/api/auth/listings", cc.listings)
  
 
-PORT = 6969;
+PORT = process.env.PORT
 
 app.listen(PORT, () => {
     console.log(`Listening on ${PORT}`);
