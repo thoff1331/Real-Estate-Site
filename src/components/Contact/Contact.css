@@ -1,0 +1,7 @@
+.contact-info {
+  display: flex;
+  height: 85vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
