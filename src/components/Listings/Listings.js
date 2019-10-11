@@ -27,7 +27,7 @@ class Listings extends Component {
     console.log(this.state.listings);
     let mappedListings = this.state.listings.map((val, index) => {
       return (
-        <div>
+        <div className="listings-form">
           <h4 key={index}>
             {" "}
             Address:{val.address} {val.city}, {val.state}
@@ -37,7 +37,7 @@ class Listings extends Component {
           <img src={image}></img>
           <h3>{val.description}</h3>
           <Link to={`listing/${val.id}`}>
-            <button>More Info</button>
+            <button className="more-info-button">More Info</button>
           </Link>
         </div>
       );
@@ -45,8 +45,7 @@ class Listings extends Component {
     return (
       <div>
         <Navbar />
-        <div>
-          <h1>Listings Page </h1>
+        <div className="listings-container">
           <div className="listings-info">{mappedListings}</div>
         </div>
       </div>

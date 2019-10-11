@@ -42,3 +42,15 @@ nav {
   margin-top: -20px;
   margin-left: 10px;
 }
+.social-media {
+  width: 300px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.social-media-logo {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+}
