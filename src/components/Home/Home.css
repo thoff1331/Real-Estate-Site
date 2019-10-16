@@ -32,3 +32,8 @@ p {
   color: white;
   background-color: blue;
 }
+.description {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

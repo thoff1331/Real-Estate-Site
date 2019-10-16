@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import "../Home/Home.css";
 import { Link, HashRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { logout } from "../../store";
+import { getSession } from "../../store";
 import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import Listings from "../Listings/Listings";
+import { login } from "../../store";
+import store, { logout } from "../../store";
 
 class Home extends Component {
   constructor(props) {
@@ -16,6 +18,10 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
+    console.log(store.getState());
+    // this.props.getSession();
+    // console.log(store.getState());
     axios.get("/api/auth/listings").then(res => {
       this.setState({
         listings: res.data
@@ -35,7 +41,7 @@ class Home extends Component {
           <h3> Price:{val.askingprice}</h3>
           <h3> Year Built:{val.yearbuilt}</h3>
           <img src={image}></img>
-          <h3>{val.description}</h3>
+          <h3 className="description">{val.description}</h3>
           <Link to={`listing/${val.id}`}>
             <button className="more-info-button">More Info</button>
           </Link>
@@ -70,5 +76,13 @@ class Home extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    email: state.email
+  };
+}
+export default connect(
+  mapStateToProps,
 
-export default Home;
+  { getSession }
+)(Home);

@@ -1,65 +1,82 @@
-import React, { Component } from 'react';
-import '../Login/Login.css';
-import { Link, HashRouter } from 'react-router-dom';
-import { connect} from 'react-redux';
-import { logout } from '../../store';
-import axios from 'axios';
-import Navbar from '../Navbar/Navbar';
-
-
-
-
-
+import React, { Component } from "react";
+import "../Login/Login.css";
+import { Link, HashRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import store, { logout } from "../../store";
+import axios from "axios";
+import Navbar from "../Navbar/Navbar";
+import { login } from "../../store";
 
 class Login extends Component {
-constructor(props) {
-super(props);   
-this.state = {
- email: "",
- passWord: "" 
-};
-this.handleChange = this.handleChange.bind(this);
-this.handleSubmit = this.handleSubmit.bind(this);
-}
-componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      login: false
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  componentDidMount() {
     console.log(this.state.email);
+    console.log(store.getState());
+    console.log(this.props);
+  }
 
-}
-
-handleChange(e) {
+  handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-  handleSubmit() {
- if (this.state.passWord != "123" || this.state.email != "1@gmail.com" ) {
-alert("Inccorrect Credentials!") }
- else {
-  alert("Success")
-    this.props.history.push("/create");
- 
-}
-console.log("hit");   
- }
-  
-render() {
- return (
-<div>
-<Navbar />
-    <div className='login-box'>
-    <h4>Sign In to continue</h4>
-   <input placeholder='Email' name='email' onChange={this.handleChange} value={this.state.email}/>
-   <br />
-   <input placeholder='Password' name='passWord' onChange={this.handleChange} value={this.state.passWord} type='password' />
-   <br />
-   <button onClick={this.handleSubmit}>Login</button>
-   <br />
-  
-   </div>
-</div>
- 
-  
- )   
-}
+  handleSubmit(e) {
+    this.props
+      .login(this.state.email, this.state.password)
+      .then(req => {
+        alert("Welcome Cheryl");
+        this.props.history.push("/");
+      })
+      .catch(err => {
+        console.log(err);
+        alert("incorrect Creditentials");
+      });
+    this.setState({
+      username: "",
+      password: "",
+      login: false
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <div className="login-box">
+          <h4>Sign In to continue</h4>
+          <input
+            placeholder="Email"
+            name="email"
+            onChange={this.handleChange}
+            value={this.state.email}
+          />
+          <br />
+          <input
+            placeholder="Password"
+            name="password"
+            onChange={this.handleChange}
+            value={this.state.password}
+            type="password"
+          />
+          <br />
+          <button onClick={this.handleSubmit}>Login</button>
+          <br />
+        </div>
+      </div>
+    );
+  }
 }
 
+const mapStateToProps = reduxState => reduxState;
 
-export default Login;
+export default connect(
+  mapStateToProps,
+  { login }
+)(Login);

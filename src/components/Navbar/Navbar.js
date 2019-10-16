@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../Navbar/Navbar.css";
-import { Link, HashRouter } from "react-router-dom";
+import { Link, HashRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../store";
 import axios from "axios";
@@ -19,6 +19,9 @@ class Navbar extends React.Component {
   };
   linkToTwitter = () => {
     window.open("https://twitter.com/?lang=en");
+  };
+  handleLogout = () => {
+    this.props.logout().then(alert("You've Logged Out"));
   };
   render() {
     return (
@@ -41,6 +44,9 @@ class Navbar extends React.Component {
           </Link>
           <Link className="links" to="/contact">
             <h3>Contact Me</h3>
+          </Link>
+          <Link className="links" to="/">
+            <h3 onClick={this.handleLogout}>LOGOUT</h3>
           </Link>
           <div className="social-media">
             <img
@@ -66,5 +72,13 @@ class Navbar extends React.Component {
     );
   }
 }
+const mapStateToProps = reduxState => {
+  return {
+    email: reduxState.email
+  };
+};
 
-export default Navbar;
+export default connect(
+  mapStateToProps,
+  { logout }
+)(Navbar);
