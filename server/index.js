@@ -12,6 +12,10 @@ const bodyParser = require("body-parser");
 const cc = require("./controllers/createController");
 const massive = require("massive");
 const session = require("express-session");
+const cloudinary = require("cloudinary");
+const formData = require("express-form-data");
+const gcs = require("@google-cloud/storage");
+const functions = require("firebase-functions");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,34 +45,23 @@ app.post("/api/create", cc.create);
 app.post("/auth/login", cc.login);
 app.get("/auth/cookie", cc.getuser);
 app.delete("/auth/logout", cc.logout);
-AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-});
-//
-AWS.config.setPromisesDependency(bluebird);
-//
-const s3 = new AWS.S3();
-//
-
-const uploadFile = (buffer, name, type) => {
-  const params = {
-    ACL: "public-read",
-    Body: buffer,
-    Bucket: process.env.S3_BUCKET,
-    ContentType: type.mime,
-    Key: `${name}.${type.ext}`
-  };
-  return s3.upload(params).promise();
-};
-
 app.use(express.static(`${__dirname}/../build`));
 
 app.post("/api/auth/create", cc.create);
 app.get("/api/auth/listings", cc.listings);
 app.get("/auth/cookie", cc.getuser);
-PORT = process.env.PORT;
 
+const uploadFile = functions.https.onRequest((req, res) => {
+  res.status(200).json({
+    message: "yes"
+  });
+});
+PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);
 });
+// alias firebase="`npm config get prefix`/bin/firebase"
+
+module.exports = {
+  uploadFile
+};

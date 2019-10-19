@@ -1,4 +1,5 @@
 const create = (req, res) => {
+  console.log(req.body);
   const db = req.app.get("db");
   const {
     address,
@@ -7,7 +8,8 @@ const create = (req, res) => {
     zipcode,
     yearbuilt,
     askingprice,
-    description
+    description,
+    image1
   } = req.body;
   db.create([
     address,
@@ -16,7 +18,8 @@ const create = (req, res) => {
     zipcode,
     yearbuilt,
     askingprice,
-    description
+    description,
+    image1
   ])
     .then(response => res.status(200).json(response[0]))
     .catch(err => console.log("nope"));

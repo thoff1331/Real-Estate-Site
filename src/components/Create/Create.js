@@ -6,6 +6,7 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import { getSession } from "../../store";
 import store, { logout } from "../../store";
+import { API_URL } from "./config";
 
 class Create extends Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class Create extends Component {
       zipcode: "",
       yearbuilt: "",
       askingprice: "",
-      description: ""
+      description: "",
+      image1: []
     };
     this.handleFileUpload = this.handleFileUpload.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -36,24 +38,6 @@ class Create extends Component {
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-  handleFileUpload(e) {
-    this.setState({ file: e.target.files });
-  }
-  submitFile = (event, id) => {
-    event.preventDefault();
-    if (!this.state.file) {
-      alert("Please Upload a Profile Picture");
-    } else {
-      event.preventDefault();
-      const formData = new FormData();
-      formData.append("file", this.state.file[0]);
-      axios.post("/auth/addProfilePic", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      });
-    }
-  };
 
   handleSubmit(e) {
     e.preventDefault();
@@ -64,13 +48,23 @@ class Create extends Component {
       yearbuilt: this.state.yearbuilt,
       state: this.state.state,
       description: this.state.description,
-      askingprice: this.state.askingprice
+      askingprice: this.state.askingprice,
+      image1: this.state.image1
     });
     this.props.history.push("/listings");
     console.log(this.state);
   }
+  fileSelectedHandler = e => {
+    this.setState({
+      image1: e.target.files[0]
+    });
+  };
+  fileUploadHandler = e => {
+    axios.post();
+  };
 
   render() {
+    console.log(this.state.image1);
     return (
       <div>
         <Navbar />
@@ -128,9 +122,10 @@ class Create extends Component {
             </li>
             <li>
               <input
+                onChange={this.fileSelectedHandler}
                 onChange={this.handleChange}
-                onChange={this.handleFileUpload}
                 type="file"
+                name="image1"
               ></input>
             </li>
             <li>

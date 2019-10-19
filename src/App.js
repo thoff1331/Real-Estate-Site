@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
+
 import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar.js";
@@ -7,7 +8,7 @@ import Login from "./components/Login/Login";
 import Create from "./components/Create/Create";
 import { HashRouter } from "react-router-dom";
 import routes from "./routes";
-
+import { API_URL } from "./config";
 function App() {
   return <HashRouter>{routes}</HashRouter>;
 }

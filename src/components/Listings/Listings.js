@@ -34,7 +34,7 @@ class Listings extends Component {
           </h4>
           <h3> Price:{val.askingprice}</h3>
           <h3> Year Built:{val.yearbuilt}</h3>
-          <img src={image}></img>
+          <img src={val.image1}></img>
           <h3 className="description">{val.description}</h3>
           <Link to={`listing/${val.id}`}>
             <button className="more-info-button">More Info</button>
