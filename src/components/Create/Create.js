@@ -6,7 +6,6 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import { getSession } from "../../store";
 import store, { logout } from "../../store";
-import { API_URL } from "./config";
 
 class Create extends Component {
   constructor(props) {
@@ -60,7 +59,13 @@ class Create extends Component {
     });
   };
   fileUploadHandler = e => {
-    axios.post();
+    const fd = new FormData();
+    fd.append("image", this.state.image1, this.state.image1);
+    axios
+      .post("https://us-central1-reales-b8824.cloudfunctions.net/uploadFile")
+      .then(res => {
+        console.log(res);
+      });
   };
 
   render() {
@@ -122,11 +127,11 @@ class Create extends Component {
             </li>
             <li>
               <input
-                onChange={this.fileSelectedHandler}
-                onChange={this.handleChange}
+                onChange={(this.fileSelectedHandler, this.handleChange)}
                 type="file"
                 name="image1"
               ></input>
+              <button onClick={this.handleFileUpload}>Upload</button>
             </li>
             <li>
               <textarea

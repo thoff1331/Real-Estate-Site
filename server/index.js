@@ -16,6 +16,10 @@ const cloudinary = require("cloudinary");
 const formData = require("express-form-data");
 const gcs = require("@google-cloud/storage");
 const functions = require("firebase-functions");
+const path = require("path");
+const Busboy = require("busboy");
+const admin = require("firebase-admin");
+const os = require("os");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -51,17 +55,8 @@ app.post("/api/auth/create", cc.create);
 app.get("/api/auth/listings", cc.listings);
 app.get("/auth/cookie", cc.getuser);
 
-const uploadFile = functions.https.onRequest((req, res) => {
-  res.status(200).json({
-    message: "yes"
-  });
-});
 PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);
 });
 // alias firebase="`npm config get prefix`/bin/firebase"
-
-module.exports = {
-  uploadFile
-};

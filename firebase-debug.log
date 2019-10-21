@@ -1,0 +1,131 @@
+[debug] [2019-10-21T03:59:51.902Z] ----------------------------------------------------------------------
+[debug] [2019-10-21T03:59:51.906Z] Command:       /usr/local/bin/node /Users/trevorhoffman/.npm-globall/bin/firebase deploy
+[debug] [2019-10-21T03:59:51.907Z] CLI Version:   7.6.1
+[debug] [2019-10-21T03:59:51.907Z] Platform:      darwin
+[debug] [2019-10-21T03:59:51.907Z] Node Version:  v10.16.3
+[debug] [2019-10-21T03:59:51.908Z] Time:          Sun Oct 20 2019 21:59:51 GMT-0600 (Mountain Daylight Time)
+[debug] [2019-10-21T03:59:51.908Z] ----------------------------------------------------------------------
+[debug] [2019-10-21T03:59:51.908Z] 
+[debug] [2019-10-21T03:59:51.925Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-10-21T03:59:51.925Z] > authorizing via signed-in user
+[debug] [2019-10-21T03:59:51.926Z] [iam] checking project realestate-fdb56 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2019-10-21T03:59:51.928Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/realestate-fdb56:testIamPermissions  
+
+[debug] [2019-10-21T03:59:52.301Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-21T03:59:52.305Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/realestate-fdb56  
+ 
+[debug] [2019-10-21T03:59:52.568Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'realestate-fdb56'...
+[info] 
+[info] i  deploying database, storage, functions, hosting
+[info] i  database: checking rules syntax...
+[debug] [2019-10-21T03:59:55.560Z] >>> HTTP REQUEST PUT https://realestate-fdb56.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+  "rules": {
+    ".read": false,
+    ".write": false
+  }
+}
+[debug] [2019-10-21T03:59:55.839Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database realestate-fdb56 is valid
+[debug] [2019-10-21T03:59:55.843Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/realestate-fdb56  
+ 
+[debug] [2019-10-21T03:59:56.359Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2019-10-21T03:59:56.363Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/realestate-fdb56:test  
+
+[debug] [2019-10-21T03:59:56.613Z] <<< HTTP RESPONSE 200
+[info] ✔  storage: rules file storage.rules compiled successfully
+[debug] [2019-10-21T03:59:56.617Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "dependencies": {
+    "busboy": "^0.3.1",
+    "child-process-promise": "^2.2.1",
+    "cors": "^2.8.5",
+    "firebase-admin": "^8.6.0",
+    "firebase-functions": "^3.3.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.1.6"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2019-10-21T03:59:56.620Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/realestate-fdb56/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2019-10-21T03:59:56.621Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/realestate-fdb56/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2019-10-21T03:59:57.042Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-21T03:59:57.089Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2019-10-21T03:59:57.091Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/realestate-fdb56/adminSdkConfig  
+ 
+[debug] [2019-10-21T03:59:57.292Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-21T03:59:57.294Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/realestate-fdb56/versions  
+
+[debug] [2019-10-21T04:00:07.662Z] <<< HTTP RESPONSE 503
+[debug] [2019-10-21T04:00:07.663Z] <<< HTTP RESPONSE BODY
+[error] 
+[error] Error: HTTP Error: 503, The service is currently unavailable.
+[debug] [2019-10-21T04:00:07.889Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 503,
+      "message": "The service is currently unavailable.",
+      "status": "UNAVAILABLE"
+    }
+  },
+  "response": {
+    "statusCode": 503,
+    "body": {
+      "error": {
+        "code": 503,
+        "message": "The service is currently unavailable.",
+        "status": "UNAVAILABLE"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Mon, 21 Oct 2019 04:00:07 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1beta1/sites/realestate-fdb56/versions",
+        "path": "/v1beta1/sites/realestate-fdb56/versions",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/realestate-fdb56/versions"
+      },
+      "method": "POST"
+    }
+  }
+}
