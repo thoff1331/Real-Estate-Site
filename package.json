@@ -16,7 +16,7 @@
     "express": "^4.17.1",
     "express-form-data": "^2.0.10",
     "express-session": "^1.17.0",
-    "file-type": "^12.3.0",
+    "file-type": "^16.5.4",
     "firebase": "^7.2.1",
     "firebase-admin": "^8.6.1",
     "firebase-functions": "^3.3.0",
